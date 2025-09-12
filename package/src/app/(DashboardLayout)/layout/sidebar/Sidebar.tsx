@@ -52,6 +52,8 @@ const MSidebar = ({
                 boxSizing: "border-box",
                 ...scrollbarStyles,
                 width: sidebarWidth,
+                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                color: "white",
               },
             }
           }}
@@ -89,6 +91,8 @@ const MSidebar = ({
           sx: {
             boxShadow: (theme) => theme.shadows[8],
             ...scrollbarStyles,
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            color: "white",
           },
         }
       }}

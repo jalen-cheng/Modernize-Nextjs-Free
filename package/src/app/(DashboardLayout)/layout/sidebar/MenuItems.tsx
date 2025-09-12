@@ -1,11 +1,9 @@
 import {
-  IconAperture,
-  IconCopy,
   IconLayoutDashboard,
-  IconLogin,
-  IconMoodHappy,
-  IconTypography,
-  IconUserPlus,
+  IconChartBar,
+  IconSettings,
+  IconUser,
+  IconLogout,
 } from "@tabler/icons-react";
 
 import { uniqueId } from "lodash";
@@ -13,62 +11,42 @@ import { uniqueId } from "lodash";
 const Menuitems = [
   {
     navlabel: true,
-    subheader: "HOME",
+    subheader: "MEDME ASSISTANT",
   },
 
   {
     id: uniqueId(),
-    title: "Dashboard",
+    title: "Main",
     icon: IconLayoutDashboard,
     href: "/",
   },
   {
-    navlabel: true,
-    subheader: "UTILITIES",
+    id: uniqueId(),
+    title: "Analytics",
+    icon: IconChartBar,
+    href: "/analytics",
   },
   {
     id: uniqueId(),
-    title: "Typography",
-    icon: IconTypography,
-    href: "/utilities/typography",
+    title: "Settings",
+    icon: IconSettings,
+    href: "/settings",
   },
   {
     id: uniqueId(),
-    title: "Shadow",
-    icon: IconCopy,
-    href: "/utilities/shadow",
-  },
-  {
-    navlabel: true,
-    subheader: "AUTH",
-  },
-  {
-    id: uniqueId(),
-    title: "Login",
-    icon: IconLogin,
-    href: "/authentication/login",
-  },
-  {
-    id: uniqueId(),
-    title: "Register",
-    icon: IconUserPlus,
-    href: "/authentication/register",
+    title: "Profile",
+    icon: IconUser,
+    href: "/profile",
   },
   {
     navlabel: true,
-    subheader: " EXTRA",
+    subheader: "ACCOUNT",
   },
   {
     id: uniqueId(),
-    title: "Icons",
-    icon: IconMoodHappy,
-    href: "/icons",
-  },
-  {
-    id: uniqueId(),
-    title: "Sample Page",
-    icon: IconAperture,
-    href: "/sample-page",
+    title: "Logout",
+    icon: IconLogout,
+    href: "/logout",
   },
 
 ];
