@@ -78,10 +78,6 @@ const Dashboard = () => {
   const [authLoading, setAuthLoading] = useState(true);
   const router = useRouter();
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
   const checkAuth = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -106,6 +102,10 @@ const Dashboard = () => {
     localStorage.removeItem('pharmacyAccess');
     router.push('/authentication/login');
   };
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
   const loadData = async () => {
     setLoading(true);
