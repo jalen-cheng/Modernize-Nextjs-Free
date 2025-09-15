@@ -8,9 +8,6 @@ const nextConfig = {
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   },
-  experimental: {
-    outputFileTracingRoot: path.join(__dirname, '..'), // monorepo root
-  },
 };
 
 module.exports = nextConfig;
