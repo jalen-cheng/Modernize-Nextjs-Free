@@ -198,7 +198,7 @@ const Login2 = () => {
                     onChange={(e) => setPharmacyCode(e.target.value)}
                     required
                     sx={{ mb: 2 }}
-                    helperText="Use: MEDME2024"
+                    helperText="Use: MEDME2025"
                     autoComplete="off"
                   />
                   <Button

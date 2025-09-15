@@ -52,7 +52,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_here
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_here
 
 # Pharmacy Configuration
-PHARMACY_CODE=MEDME2024
+PHARMACY_CODE=MEDME2025
 ```
 
 ## 5. Test Authentication Flow
@@ -63,7 +63,7 @@ PHARMACY_CODE=MEDME2024
    - Enter your email address
    - Check your email for the 6-digit OTP code
    - Enter the OTP code
-   - Enter pharmacy code: `MEDME2024`
+   - Enter pharmacy code: `MEDME2025`
    - You should be redirected to the dashboard
 
 ## 6. Database Schema (Optional)
@@ -150,7 +150,7 @@ CREATE TRIGGER on_auth_user_created
 
 ## 10. Current Pharmacy Code
 
-The current pharmacy access code is: **`MEDME2024`**
+The current pharmacy access code is: **`MEDME2025`**
 
 Users must enter this code after email verification to access the dashboard. You can change this code in `/package/src/app/lib/schema.ts` by modifying the `PHARMACY_CODE` constant.
 

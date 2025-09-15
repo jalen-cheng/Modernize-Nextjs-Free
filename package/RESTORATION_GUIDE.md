@@ -44,7 +44,7 @@ Required variables:
 - `VAPI_API_KEY`: Your Vapi API key
 - `VAPI_ASSISTANT_ID`: Your Vapi assistant ID
 - `WEBHOOK_SECRET`: Secret for webhook validation
-- `PHARMACY_ACCESS_CODE`: Access code for pharmacy gate (default: MEDME2024)
+- `PHARMACY_ACCESS_CODE`: Access code for pharmacy gate (default: MEDME2025)
 
 ### 2. Database Setup
 Run the SQL commands in `DATABASE_SCHEMA.sql` in your Supabase SQL editor:
@@ -102,7 +102,7 @@ npm install
 npm run dev
 ```
 
-The application will be available at `http://localhost:3000`
+The application will be available at `http://localhost:3002`
 
 ## 🧪 Testing the Restored Functionality
 
@@ -111,7 +111,7 @@ The application will be available at `http://localhost:3000`
 2. Enter your email address
 3. Check email for verification link
 4. Click the link to verify
-5. Enter pharmacy code (default: MEDME2024)
+5. Enter pharmacy code (default: MEDME2025)
 6. Should redirect to dashboard
 
 ### 2. Patient Management

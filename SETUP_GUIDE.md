@@ -31,7 +31,7 @@
 - `VAPI_ASSISTANT_ID` - Your voice assistant ID
 
 ### Application
-- `PHARMACY_ACCESS_CODE=MEDME2024` - Default pharmacy code
+- `PHARMACY_ACCESS_CODE=MEDME2025` - Default pharmacy code
 
 ## Database Setup
 
@@ -45,7 +45,7 @@ The app uses simple email/password authentication:
 
 1. **Sign Up**: Create account with email/password
 2. **Sign In**: Login with credentials
-3. **Pharmacy Code**: Enter `MEDME2024` to access dashboard
+3. **Pharmacy Code**: Enter `MEDME2025` to access dashboard
 4. **Dashboard**: Access patient management interface
 
 ## Project Structure

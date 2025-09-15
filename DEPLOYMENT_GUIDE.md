@@ -41,7 +41,7 @@ TWILIO_ACCOUNT_SID=your_twilio_account_sid
 TWILIO_AUTH_TOKEN=your_twilio_auth_token
 
 # Pharmacy Access
-PHARMACY_CODE=MEDME2024
+PHARMACY_CODE=MEDME2025
 ```
 
 ## 3. Domain Configuration

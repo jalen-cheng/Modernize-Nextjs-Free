@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ valid: false, error: 'Pharmacy code is required' }, { status: 400 });
     }
     
-    const validCode = process.env.PHARMACY_ACCESS_CODE || 'MEDME2024';
+    const validCode = process.env.PHARMACY_ACCESS_CODE || 'MEDME2025';
     console.log('Comparing codes:', { provided: pharmacyCode, expected: validCode });
     
     if (pharmacyCode.trim() === validCode) {

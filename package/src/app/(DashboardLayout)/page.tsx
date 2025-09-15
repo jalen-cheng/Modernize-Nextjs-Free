@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { 
   Grid, 
   Box, 
@@ -78,36 +78,7 @@ const Dashboard = () => {
   const [authLoading, setAuthLoading] = useState(true);
   const router = useRouter();
 
-  const checkAuth = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      const pharmacyAccess = localStorage.getItem('pharmacyAccess');
-      
-      if (user && pharmacyAccess === 'true') {
-        setIsAuthenticated(true);
-        loadData();
-      } else {
-        router.push('/authentication/login');
-      }
-    } catch (error) {
-      console.error('Auth check error:', error);
-      router.push('/authentication/login');
-    } finally {
-      setAuthLoading(false);
-    }
-  };
-
-  const handleLogout = async () => {
-    await authHelpers.signOut();
-    localStorage.removeItem('pharmacyAccess');
-    router.push('/authentication/login');
-  };
-
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     setError('');
     
@@ -194,7 +165,36 @@ const Dashboard = () => {
     } finally {
       setLoading(false);
     }
+  }, []);
+
+  const checkAuth = useCallback(async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      const pharmacyAccess = localStorage.getItem('pharmacyAccess');
+      
+      if (user && pharmacyAccess === 'true') {
+        setIsAuthenticated(true);
+        loadData();
+      } else {
+        router.push('/authentication/login');
+      }
+    } catch (error) {
+      console.error('Auth check error:', error);
+      router.push('/authentication/login');
+    } finally {
+      setAuthLoading(false);
+    }
+  }, [router, loadData]);
+
+  const handleLogout = async () => {
+    await authHelpers.signOut();
+    localStorage.removeItem('pharmacyAccess');
+    router.push('/authentication/login');
   };
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   const handleAddPatient = async () => {
     try {
