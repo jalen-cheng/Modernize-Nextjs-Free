@@ -21,11 +21,26 @@ CREATE TABLE IF NOT EXISTS patients (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Create call_job table
+CREATE TABLE IF NOT EXISTS call_job (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    patient_id UUID NOT NULL REFERENCES patients(id) ON DELETE CASCADE,
+    scheduled_for TIMESTAMP WITH TIME ZONE NOT NULL,
+    status TEXT NOT NULL DEFAULT 'pending',
+    call_id TEXT,
+    claimed_at TIMESTAMP WITH TIME ZONE,
+    started_at TIMESTAMP WITH TIME ZONE,
+    failed_at TIMESTAMP WITH TIME ZONE,
+    error_message TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Create call_log table
 CREATE TABLE IF NOT EXISTS call_log (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     patient_id UUID NOT NULL REFERENCES patients(id) ON DELETE CASCADE,
-    call_job_id TEXT,
+    call_job_id UUID REFERENCES call_job(id) ON DELETE SET NULL,
     started_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     ended_at TIMESTAMP WITH TIME ZONE,
     status TEXT NOT NULL,
@@ -41,6 +56,7 @@ CREATE TABLE IF NOT EXISTS call_log (
 
 -- Enable Row Level Security (RLS)
 ALTER TABLE patients ENABLE ROW LEVEL SECURITY;
+ALTER TABLE call_job ENABLE ROW LEVEL SECURITY;
 ALTER TABLE call_log ENABLE ROW LEVEL SECURITY;
 
 -- Create RLS policies for authenticated users
@@ -62,8 +78,21 @@ CREATE POLICY "Users can view all call logs" ON call_log
 CREATE POLICY "Users can insert call logs" ON call_log
     FOR INSERT WITH CHECK (auth.role() = 'authenticated');
 
+-- Create RLS policies for call_job table
+CREATE POLICY "Users can view all call jobs" ON call_job
+    FOR SELECT USING (auth.role() = 'authenticated');
+
+CREATE POLICY "Users can insert call jobs" ON call_job
+    FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+
+CREATE POLICY "Users can update call jobs" ON call_job
+    FOR UPDATE USING (auth.role() = 'authenticated');
+
 -- Create indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_patients_created_at ON patients(created_at);
+CREATE INDEX IF NOT EXISTS idx_call_job_patient_id ON call_job(patient_id);
+CREATE INDEX IF NOT EXISTS idx_call_job_status ON call_job(status);
+CREATE INDEX IF NOT EXISTS idx_call_job_scheduled_for ON call_job(scheduled_for);
 CREATE INDEX IF NOT EXISTS idx_call_log_patient_id ON call_log(patient_id);
 CREATE INDEX IF NOT EXISTS idx_call_log_status ON call_log(status);
 CREATE INDEX IF NOT EXISTS idx_call_log_started_at ON call_log(started_at);
@@ -77,9 +106,14 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
--- Create trigger for patients table
+-- Create triggers for updated_at columns
 CREATE TRIGGER update_patients_updated_at 
     BEFORE UPDATE ON patients 
+    FOR EACH ROW 
+    EXECUTE FUNCTION update_updated_at_column();
+
+CREATE TRIGGER update_call_job_updated_at 
+    BEFORE UPDATE ON call_job 
     FOR EACH ROW 
     EXECUTE FUNCTION update_updated_at_column();
 

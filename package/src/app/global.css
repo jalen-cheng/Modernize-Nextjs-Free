@@ -1,1 +1,3 @@
-/* Font family is handled by Next.js font optimization in DefaultColors.tsx */
+*{
+     font-family: 'Plus Jakarta Sans', Helvetica, Arial, sans-serif !important;
+}

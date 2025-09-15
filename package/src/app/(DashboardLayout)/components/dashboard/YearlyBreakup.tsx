@@ -1,4 +1,6 @@
-import React from 'react';
+
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from '@mui/material/styles';
 import { Grid, Stack, Typography, Avatar } from '@mui/material';
 import { IconArrowUpLeft } from '@tabler/icons-react';
@@ -64,7 +66,11 @@ const YearlyBreakup = () => {
     <DashboardCard title="Yearly Breakup">
       <Grid container spacing={3}>
         {/* column */}
-        <Grid size={{ xs: 7, sm: 7 }}>
+        <Grid
+          size={{
+            xs: 7,
+            sm: 7
+          }}>
           <Typography variant="h3" fontWeight="700">
             $36,358
           </Typography>
@@ -99,12 +105,17 @@ const YearlyBreakup = () => {
           </Stack>
         </Grid>
         {/* column */}
-        <Grid size={{ xs: 5, sm: 5 }}>
-          <div style={{ height: 150, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
-            <Typography variant="body2" color="textSecondary">
-              Chart Component Disabled
-            </Typography>
-          </div>
+        <Grid
+          size={{
+            xs: 5,
+            sm: 5
+          }}>
+          <Chart
+            options={optionscolumnchart}
+            series={seriescolumnchart}
+            type="donut"
+            height={150} width={"100%"}
+          />
         </Grid>
       </Grid>
     </DashboardCard>

@@ -1,8 +1,9 @@
 import React from 'react';
-import { Select, MenuItem, Typography } from '@mui/material';
+import { Select, MenuItem } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import DashboardCard from '@/app/(DashboardLayout)/components/shared/DashboardCard';
-// Chart component disabled for Next.js 15 compatibility
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 
 const SalesOverview = () => {
@@ -103,11 +104,12 @@ const SalesOverview = () => {
                 <MenuItem value={3}>May 2025</MenuItem>
             </Select>
         }>
-            <div style={{ height: 370, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#f5f5f5', borderRadius: '8px' }}>
-                <Typography variant="body1" color="textSecondary">
-                    Sales Chart Component Disabled
-                </Typography>
-            </div>
+            <Chart
+                options={optionscolumnchart}
+                series={seriescolumnchart}
+                type="bar"
+                height={370} width={"100%"}
+            />
         </DashboardCard>
     );
 };
