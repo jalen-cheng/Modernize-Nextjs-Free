@@ -2,9 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: { unoptimized: true },
-  experimental: {
-    serverComponentsExternalPackages: ['@supabase/supabase-js']
-  },
+  serverExternalPackages: ['@supabase/supabase-js'],
   env: {
     CUSTOM_KEY: process.env.CUSTOM_KEY,
   }
