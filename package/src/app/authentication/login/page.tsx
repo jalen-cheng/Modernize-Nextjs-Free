@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Grid, Box, Card, Typography, TextField, Button, Alert, CircularProgress } from "@mui/material";
 import { useRouter } from "next/navigation";
 // components
-import PageContainer from "@/app/(DashboardLayout)/components/container/PageContainer";
-import Logo from "@/app/(DashboardLayout)/layout/shared/logo/Logo";
+import PageContainer from "@/app/(dashboard)/components/container/PageContainer";
+import Logo from "@/app/(dashboard)/layout/shared/logo/Logo";
 import { authHelpers } from "@/app/lib/supabase";
 
 const Login2 = () => {

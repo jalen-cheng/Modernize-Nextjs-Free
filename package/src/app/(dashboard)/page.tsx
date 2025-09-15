@@ -26,7 +26,7 @@ import {
 } from '@mui/material';
 import { Phone, Add, Refresh } from '@mui/icons-material';
 import { useRouter } from 'next/navigation';
-import PageContainer from '@/app/(DashboardLayout)/components/container/PageContainer';
+import PageContainer from '@/app/(dashboard)/components/container/PageContainer';
 import { supabase, authHelpers } from '@/app/lib/supabase';
 import { supabaseAdmin } from '@/app/lib/supabaseAdmin';
 import { PatientSchema } from '@/app/lib/schema';

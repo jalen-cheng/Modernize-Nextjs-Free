@@ -1,1 +1,1 @@
-export { default } from './(DashboardLayout)/page';
+export { default } from './(dashboard)/page';
