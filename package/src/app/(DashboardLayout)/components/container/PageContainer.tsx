@@ -1,6 +1,4 @@
-// import { Helmet } from 'react-helmet';
-import react from 'react'
-
+import React from 'react';
 
 type Props = {
   description?: string;
@@ -9,15 +7,9 @@ type Props = {
 };
 
 const PageContainer = ({ title, description, children }: Props) => (
-
   <div>
-
-    <title>{title}</title>
-    <meta name="description" content={description} />
-
     {children}
   </div>
-
 );
 
 export default PageContainer;
