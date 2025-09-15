@@ -1,7 +1,10 @@
 {
-  "buildCommand": "cd package && npm run build",
-  "outputDirectory": "package/.next",
-  "installCommand": "cd package && npm install",
+  "builds": [
+    {
+      "src": "package/package.json",
+      "use": "@vercel/next"
+    }
+  ],
   "cleanUrls": true,
   "trailingSlash": false
 }
