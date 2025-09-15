@@ -1,6 +1,4 @@
-
-import dynamic from "next/dynamic";
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Stack, Typography, Avatar, Fab } from '@mui/material';
 import { IconArrowDownRight, IconCurrencyDollar } from '@tabler/icons-react';
@@ -61,7 +59,9 @@ const MonthlyEarnings = () => {
         </Fab>
       }
       footer={
-        <Chart options={optionscolumnchart} series={seriescolumnchart} type="area" height={60} width={"100%"} />
+        <div style={{ height: 60, backgroundColor: '#f5f5f5', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Typography variant="caption" color="textSecondary">Chart Disabled</Typography>
+        </div>
       }
     >
       <>
